@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.prmallela.android.popularmovies.DetailActivity">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/Title_Height"
+            android:gravity="center_vertical"
+            android:id="@+id/dtitle"
+            android:textSize="@dimen/Title_Text_Size"
+            android:padding="@dimen/title_land_padding"
+            android:textColor="@color/white"
+            android:background="@color/titleBackground" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MovieItemPadding"
+        android:id="@+id/dimageview"
+        android:src="@drawable/sample"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        android:layout_below="@+id/dtitle"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="@dimen/imageMarginTop"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MovieItemPadding"
+        android:id="@+id/drelease"
+        android:layout_marginLeft="@dimen/release_MarginLeftStart"
+        android:layout_marginStart="@dimen/release_MarginLeftStart"
+        android:layout_marginTop="@dimen/releaseL_MarginTop"
+        android:layout_toRightOf="@id/dimageview"
+        android:textSize="@dimen/release_XTextSize"
+        android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MovieItemPadding"
+        android:id="@+id/drating"
+        android:layout_marginLeft="@dimen/rating_LMarginLeftStart"
+        android:layout_marginStart="@dimen/rating_LMarginLeftStart"
+        android:layout_marginTop="@dimen/rating_LMarginTop"
+        android:layout_toRightOf="@id/dimageview"
+        android:textSize="28sp"
+        android:textAppearance="?android:attr/textAppearanceSmall"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/MovieItemPadding"
+        android:id="@+id/doverview"
+        android:layout_marginLeft="@dimen/overview_LMarginLeft"
+        android:layout_marginStart="@dimen/overview_LMarginStart"
+        android:layout_toRightOf="@id/dimageview"
+        android:layout_below="@id/drating"
+        android:textSize="@dimen/overview_XTextSize"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+
+
+
+</RelativeLayout>
+    </ScrollView>
