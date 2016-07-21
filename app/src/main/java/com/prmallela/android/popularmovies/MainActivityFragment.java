@@ -177,7 +177,7 @@ public class MainActivityFragment extends Fragment {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Movie movie = resultData.get(i);
                         Intent intent = new Intent(getActivity(), DetailActivity.class);
-                        intent.putExtra("SMovie", (Serializable) movie);
+                        intent.putExtra("SMovie", movie);
                         startActivity(intent);
 
                     }
