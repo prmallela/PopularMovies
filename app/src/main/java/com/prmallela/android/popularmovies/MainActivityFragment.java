@@ -3,6 +3,8 @@ package com.prmallela.android.popularmovies;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,7 +39,7 @@ import static com.prmallela.android.popularmovies.TheMovieDBURL.*;
 
 public class MainActivityFragment extends Fragment {
 
-    private View rootView;
+    private GridView gridView;
 
 
     public MainActivityFragment() {
@@ -53,7 +55,7 @@ public class MainActivityFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-        this.rootView = rootView;
+        gridView = (GridView) rootView.findViewById(R.id.grid_view);
         if (connected(getContext())) {
             FetchMovieData movieData = new FetchMovieData();
             movieData.execute(NOW_PLAYING);
@@ -109,7 +111,7 @@ public class MainActivityFragment extends Fragment {
             JSONArray movieArray = moviesData.getJSONArray(OWN_REUSLTS);
 
             for (int i = 0; i < movieArray.length(); i++) {
-                Movie movie = new Movie();
+                Movie movie = new Movie(Parcel.obtain());
                 JSONObject movieData = movieArray.getJSONObject(i);
                 movie.setPoster_path(IMAGE_BASEURL.concat(movieData.getString(OWN_POSTER_PATH)));
                 movie.setOriginal_title(movieData.getString(OWN_ORIGIANL_TITLE));
@@ -165,9 +167,6 @@ public class MainActivityFragment extends Fragment {
         @Override
         protected void onPostExecute(final List<Movie> resultData) {
             if (resultData != null) {
-                GridView gridView = (GridView) rootView.findViewById(R.id.grid_view);
-
-
                 MoviesAdapter moviesAdapter = new MoviesAdapter(getActivity(), resultData);
                 gridView.setAdapter(moviesAdapter);
 

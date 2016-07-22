@@ -1,17 +1,54 @@
 package com.prmallela.android.popularmovies;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 import java.io.SerializablePermission;
 
 /**
  * Created by param on 7/17/2016.
  */
-public class Movie implements Serializable {
+public class Movie implements Parcelable {
     private String poster_path;
     private String overview;
     private String release_date;
     private String original_title;
     private String vote_average;
+
+    protected Movie(Parcel in) {
+        poster_path = in.readString();
+        overview = in.readString();
+        release_date = in.readString();
+        original_title = in.readString();
+        vote_average = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(poster_path);
+        dest.writeString(overview);
+        dest.writeString(release_date);
+        dest.writeString(original_title);
+        dest.writeString(vote_average);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 
     public String getPoster_path() {
         return poster_path;

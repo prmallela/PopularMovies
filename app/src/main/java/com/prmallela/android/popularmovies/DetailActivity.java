@@ -17,7 +17,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         //Getting Selected Movie by user from MainActivityFragment
-        Movie movie = (Movie) getIntent().getSerializableExtra("SMovie");
+        Movie movie = getIntent().getParcelableExtra("SMovie");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageView imageView = (ImageView) findViewById(R.id.dimageview);
