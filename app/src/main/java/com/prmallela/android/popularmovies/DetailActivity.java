@@ -1,5 +1,6 @@
 package com.prmallela.android.popularmovies;
 
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -11,14 +12,16 @@ import static com.prmallela.android.popularmovies.Extras.getYear;
 
 public class DetailActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         //Getting Selected Movie by user from MainActivityFragment
         Movie movie = getIntent().getParcelableExtra("SMovie");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageView imageView = (ImageView) findViewById(R.id.dimageview);
         Picasso
